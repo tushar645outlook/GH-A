@@ -34,7 +34,7 @@ jobs:
        
   deploy:
    if: inputs.environment == 'dev'
-   needs: [build,test]
+   needs: [code,build,test]
    runs-on: ubuntu-latest
    steps:
      - name: deploy the container
