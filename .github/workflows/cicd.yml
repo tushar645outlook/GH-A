@@ -21,12 +21,14 @@ jobs:
        run: echo "code clone from github"
        
   build:
+   needs: code
    runs-on: ubuntu-latest
    steps:
      - name: build docker container
        run: echo "docker container build"
   
   test:
+   needs: build
    runs-on: ubuntu-latest
    steps:
      - name: Test the container
@@ -34,7 +36,7 @@ jobs:
        
   deploy:
    if: inputs.environment == 'dev'
-   needs: [code,build,test]
+   needs: test
    runs-on: ubuntu-latest
    steps:
      - name: deploy the container
