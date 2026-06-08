@@ -1,8 +1,11 @@
 # this is workflow name
 name: hello workflow
 
-on:
- workflow_dispatch: 
+on: 
+ push:
+   branches: [main]
+    path:
+    - "**.html"
 # those are jobs inside workflow
 jobs:
 
