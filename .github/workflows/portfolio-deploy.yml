@@ -24,6 +24,8 @@ jobs:
 
       - name: Upload static files
         uses: actions/upload-pages-artifect@v4
+        with:
+          path: "."
 
       - name: deploy to github pages
         uses: actions/deploy-pages@v4
