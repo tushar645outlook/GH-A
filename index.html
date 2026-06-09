@@ -1,170 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        /* Basic embedded CSS for clean presentation */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        section {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1, h2, h3 {
-            color: #1a1a1a;
-        }
-        .project-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            background-color: #fafafa;
-        }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 0;
-            list-style: none;
-        }
-        .skills-list li {
-            background: #e1e1e1;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.9em;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        input, textarea, button {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        button {
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        button:hover {
-            background-color: #0052a3;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tushar Shinde | Azure Cloud & Microsoft 365 Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#030712;
+ --card:rgba(255,255,255,.08);
+ --border:rgba(255,255,255,.15);
+ --accent:#00d4ff;
+ --accent2:#3b82f6;
+ --text:#f8fafc;
+ --muted:#94a3b8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ font-family:Inter,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ overflow-x:hidden;
+}
+body::before,body::after{
+ content:"";
+ position:fixed;
+ width:500px;height:500px;border-radius:50%;
+ filter:blur(120px);
+ opacity:.18;z-index:-1;
+ animation:float 12s infinite alternate ease-in-out;
+}
+body::before{background:#00d4ff;left:-150px;top:-100px}
+body::after{background:#3b82f6;right:-150px;bottom:-100px}
+@keyframes float{to{transform:translate(120px,80px)}}
+
+nav{
+ position:fixed;top:20px;left:50%;transform:translateX(-50%);
+ width:min(1100px,92%);display:flex;justify-content:space-between;
+ padding:16px 24px;
+ background:rgba(255,255,255,.08);
+ backdrop-filter:blur(18px);
+ border:1px solid var(--border);
+ border-radius:20px;z-index:100;
+}
+nav a{color:white;text-decoration:none;margin-left:18px}
+.hero{
+ min-height:100vh;display:flex;align-items:center;justify-content:center;
+ text-align:center;padding:120px 20px;
+}
+.hero h1{
+ font-size:clamp(3rem,8vw,6rem);
+ background:linear-gradient(90deg,#fff,#00d4ff);
+ -webkit-background-clip:text;color:transparent;
+}
+.hero p{max-width:700px;margin:20px auto;color:var(--muted);font-size:1.1rem}
+.btn{
+ display:inline-block;padding:14px 28px;margin:10px;border-radius:999px;
+ text-decoration:none;color:white;
+ background:linear-gradient(135deg,var(--accent),var(--accent2));
+ transition:.35s;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,212,255,.35)}
+.container{width:min(1100px,92%);margin:auto}
+.section{padding:90px 0}
+.section-title{text-align:center;font-size:2.4rem;margin-bottom:40px}
+.glass{
+ background:var(--card);
+ backdrop-filter:blur(18px);
+ border:1px solid var(--border);
+ border-radius:24px;
+}
+.about,.skills,.projects,.contact{padding:30px}
+.grid{display:grid;gap:24px}
+.skills-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.skill{
+ padding:20px;text-align:center;
+ transition:.35s;
+}
+.skill:hover{
+ transform:translateY(-8px);
+ box-shadow:0 20px 40px rgba(0,212,255,.15);
+}
+.projects-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.project{
+ padding:24px;transition:.35s;
+}
+.project:hover{
+ transform:translateY(-10px) scale(1.02);
+ border-color:#00d4ff;
+}
+.stats{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+ gap:20px;margin-top:40px;
+}
+.stat{text-align:center;padding:24px}
+.number{font-size:2rem;font-weight:800;color:var(--accent)}
+footer{text-align:center;padding:40px;color:var(--muted)}
+input,textarea{
+ width:100%;padding:14px;margin-top:10px;
+ background:rgba(255,255,255,.05);
+ border:1px solid var(--border);
+ color:white;border-radius:12px;
+}
+button{
+ margin-top:16px;padding:14px 22px;border:none;border-radius:12px;
+ background:linear-gradient(135deg,var(--accent),var(--accent2));
+ color:white;cursor:pointer;
+}
+.reveal{opacity:0;transform:translateY(40px);transition:.8s}
+.reveal.show{opacity:1;transform:none}
+</style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
-    <header>
-        <h1>John Doe</h1>
-        <p>Web Developer & Designer</p>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+<nav>
+<div><strong>Tushar Shinde</strong></div>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
 
-    <!-- About Me Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I am a passionate web developer focused on building clean, accessible, and user-friendly digital experiences. I enjoy solving complex problems and turning ideas into responsive web applications.</p>
-    </section>
+<section class="hero">
+<div>
+<h1>Tushar Shinde</h1>
+<p>Azure Cloud • Microsoft 365 • DevOps Engineer building secure, scalable and automated enterprise cloud solutions.</p>
+<a href="#projects" class="btn">View Projects</a>
+<a href="#contact" class="btn">Contact Me</a>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Core Skills</h2>
-        <ul class="skills-list">
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>Git & GitHub</li>
-            <li>Responsive Design</li>
-        </ul>
-    </section>
+<div class="stats">
+<div class="glass stat"><div class="number">8+</div>Years Experience</div>
+<div class="glass stat"><div class="number">120+</div>Cloud Projects</div>
+<div class="glass stat"><div class="number">99.95%</div>Availability</div>
+<div class="glass stat"><div class="number">15+</div>Migrations</div>
+</div>
+</div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        
-        <!-- Project 1 -->
-        <div class="project-card">
-            <h3>E-Commerce Platform</h3>
-            <p>A full-featured online storefront built to optimize user checkout flows and product catalog browsing.</p>
-            <p><strong>Technologies:</strong> JavaScript, Semantic HTML, CSS Grid</p>
-            <a href="https://github.com" target="_blank" rel="noopener">View Source Code</a>
-        </div>
+<section id="about" class="section container reveal">
+<h2 class="section-title">About Me</h2>
+<div class="glass about">
+<p>
+Experienced Azure Cloud and Microsoft 365 Engineer specializing in Azure Infrastructure,
+Exchange Online, Microsoft Defender, Azure Virtual Desktop, Entra ID, PowerShell automation,
+GitHub Actions and enterprise cloud modernization. Passionate about automating operations,
+enhancing security posture and delivering highly available cloud platforms.
+</p>
+</div>
+</section>
 
-        <!-- Project 2 -->
-        <div class="project-card">
-            <h3>Task Management Dashboard</h3>
-            <p>An interactive productivity application that allows teams to track daily tasks, organize schedules, and collaborate in real-time.</p>
-            <p><strong>Technologies:</strong> HTML5 Data Attributes, LocalStorage, Flexbox</p>
-            <a href="https://github.com" target="_blank" rel="noopener">View Source Code</a>
-        </div>
-    </section>
+<section id="skills" class="section container reveal">
+<h2 class="section-title">Core Technologies</h2>
+<div class="grid skills-grid">
+<div class="glass skill">Microsoft Azure</div>
+<div class="glass skill">Microsoft 365</div>
+<div class="glass skill">Exchange Online</div>
+<div class="glass skill">PowerShell</div>
+<div class="glass skill">Azure DevOps</div>
+<div class="glass skill">GitHub Actions</div>
+<div class="glass skill">Terraform</div>
+<div class="glass skill">Microsoft Sentinel</div>
+<div class="glass skill">Defender for Cloud</div>
+<div class="glass skill">Azure Virtual Desktop</div>
+<div class="glass skill">Microsoft Purview</div>
+<div class="glass skill">Entra ID</div>
+</div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <p>Feel free to reach out if you want to collaborate on a project or just want to say hi!</p>
-        
-        <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required placeholder="Your Name">
+<section id="projects" class="section container reveal">
+<h2 class="section-title">Featured Projects</h2>
+<div class="grid projects-grid">
+<div class="glass project">
+<h3>Enterprise Mailbox Migration</h3>
+<p>Automated archive migration and mailbox recovery workflows using PowerShell and Microsoft Purview.</p>
+</div>
+<div class="glass project">
+<h3>Azure Virtual Desktop Platform</h3>
+<p>Designed secure host pool architecture for internal and external users.</p>
+</div>
+<div class="glass project">
+<h3>Security Monitoring Modernization</h3>
+<p>Implemented Microsoft Sentinel and Defender for Cloud governance.</p>
+</div>
+</div>
+</section>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required placeholder="Your Email Address">
+<section id="contact" class="section container reveal">
+<h2 class="section-title">Let's Connect</h2>
+<div class="glass contact">
+<input placeholder="Your Name">
+<input placeholder="Email Address">
+<textarea rows="5" placeholder="Your Message"></textarea>
+<button>Send Message</button>
+</div>
+</section>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+<footer>
+© 2026 Tushar Shinde • Azure Cloud & Microsoft 365 Engineer
+</footer>
 
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 John Doe. All rights reserved.</p>
-    </footer>
-
+<script>
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting) entry.target.classList.add('show');
+ });
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
