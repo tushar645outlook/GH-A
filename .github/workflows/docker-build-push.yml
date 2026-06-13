@@ -1,6 +1,8 @@
 name: docker build & push
 
-on: workflow_dispatch
+on: 
+ push:
+   branches: [main]
 
 jobs:
   build and push:
@@ -17,5 +19,9 @@ jobs:
      - name: build and push to docker hub
        uses: docker/build-push-action@v6
        with:
+         context: .
          push: true
-         tag: ${{vars.DOCKERHUB_USER}}/app:latest
+         tag: |
+           ${{vars.DOCKERHUB_USER}}/github-action-app:${{ vars.GITHUB_HEAD_REF }}
+           ${{vars.DOCKERHUB_USER}}/github-action-app:latest
+           ${{vars.DOCKERHUB_USER}}/github-action-app::${{ vars.GITHUB_SHA }}
