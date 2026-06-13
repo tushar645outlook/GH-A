@@ -5,7 +5,8 @@ on:
 jobs:
   
   deploy:
-   environment:
+   env:
+     
     DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
    
    runs-on: ubuntu-latest
