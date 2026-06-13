@@ -1,4 +1,4 @@
-name: Deploy flask app
+name: Deploy-flask-app
 on: 
  workflow_dispatch: 
 
